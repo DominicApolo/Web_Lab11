@@ -1,0 +1,135 @@
+#avatar {
+  border: 3px solid #000000;
+  border-radius: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 125px;
+  height: 125px;
+  background-size: auto;
+  cursor: pointer;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family:"Impact, Charcoal, sans-serif";
+  background-image: url("https://cdn.hipwallpaper.com/m/92/60/RhG7BO.jpg");
+}
+
+.login {
+  float: left 10px;
+  text-align:left;
+  width: 325px;
+  overflow: hidden;
+  margin: auto;
+  padding: 80px;
+  background-image: url("https://cdn.hipwallpaper.com/m/92/60/RhG7BO.jpg");
+  border-radius: 15px;
+  box-shadow: 5px 5px 5px black;
+}
+
+h2{
+  text-align: center;
+  color: black;
+  padding: 20px;
+  text-shadow: 1px 1px skyblue;
+  font-family: "Impact, Charcoal, sans-serif";
+}
+
+label{
+  color: black;
+  font-size: 17px;
+}
+
+#Uname{
+  width: 300px;
+  height: 25px;
+  border: none;
+  border-radius: 3px;
+  padding-left: 8px;
+  border: 1px solid grey;
+}
+#Pass{
+  width: 300px;
+  height: 25px;
+  border: none;
+  border-radius: 3px;
+  padding-left: 8px;
+  border: 1px solid grey;
+
+}
+#log{
+  width: 300px;
+  height: 30px;
+  border: none;
+  border-radius: 4px;
+  padding-left: 7px;
+  color: white;
+  border: 1px solid grey;
+  background: black;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+#StrongPass {
+  font-size: 12px;
+}
+
+#forgotpass {
+  float: right;
+
+}
+
+#myFunction {
+  height: 20px;
+  background: black;
+  color: white;
+  font-weight: 500;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid grey;
+
+}
+#pilloutput {
+  float: right;
+  font-size: 15px;
+  text-align: left;
+}
+
+#generatePill {
+  float: left;
+  width: 100px;
+  font-weight: 500;
+  border-radius: 15px;
+  border: 1px solid grey;
+}
+
+#spin1 {
+  background: white;
+}
+#spin2 {
+  background: white;
+}
+#spin3 {
+  background: white;
+
+}
+
+#spinbutton {
+  font-weight: 500;
+  border-radius: 4px;
+  border: 1px solid grey;
+}
+
+#submitSpin {
+  font-weight: 500;
+  border-radius: 4px;
+  border: 1px solid grey;
+}
+#pointBox {
+  font-family:"Impact, Charcoal, sans-serif";
+  width: 50px;
+  text-align: center;
+  border: 1px solid grey;
+}

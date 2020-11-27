@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!-- CSCI 200 Lab 11                                     Dominic Apolo -->
+<!-- This is a login page that include games using materials from lab  -->
+<!-- ================================================================= -->
+
+<html>
+  <head>
+    <title> Login Page</title>
+    <link rel="stylesheet" type="text/css" href="gitlab11style.css">
+    <link rel="stylesheet" href="style.css">
+
+
+  <body>
+      <h2>CSCI 200<br> Login Page<br></h2>
+      <!-- features the main page (login, favorite link, alert, games created from RandomOneOf and parseFloat) -->
+      <!-- includes two icon in the page using onmouseout & onmouseover-->
+      <div class="login">
+        <form id="login" method="get" action="login.php">
+          <img src="https://img.icons8.com/ios/512/000000/the-flash-sign.png" id="avatar" class="center"
+            onmouseover="this.src='https://img.icons8.com/ios-filled/512/000000/naruto.png';"
+            onmouseout="this.src='https://img.icons8.com/ios/512/000000/the-flash-sign.png';"><br>
+        </form>
+
+    <!-- Username/Password has input and output that is after the "SUBMIT" button -->
+    <label><b>User Name</b>
+      <input type="text" name="Uname" id="Uname" placeholder="Username">
+        <br><br>
+    <label><b>Password</b>
+      <a href="https://blog.avast.com/strong-password-ideas" id="StrongPass" target="popup" onclick="window.open('https://blog.avast.com/strong-password-ideas','popup','width=800px,height=500px'); return false";> <i>(Ideas for a strong password) </i></a></label>
+      <input type="password" name="Pass" id="Pass" placeholder="Password">
+        <br><br>
+      <input type="checkbox" onclick="Password()"> Show Password
+        <br><br>
+      <!-- Alerts when Username and Passward are empty -->
+      <input onclick="submitform()" type="button" name="log" id="log" value="SUBMIT">
+        <br>
+        <br>
+      <a href="https://giphy.com/gifs/3ornk7TgUdhjhTYgta/html5" id="forgotpass" target="popup" onclick="window.open('https://giphy.com/gifs/3ornk7TgUdhjhTYgta/html5','popup','width=500px,height=250px'); return false";>Forget Password? </a>
+      <input onclick="fakeGame()" type="button" name="playgame" id="myFunction" value="Click to Play Game!">
+      <br>
+  <b>
+
+      <!-- The output of the username an password -->
+      <div id="outputDiv" style="text-align:center;"></div>
+    </b>
+    <br>
+    <!-- Game 1 generate red/blue pills that is processed through RandomOneOf and var/if statements -->
+    Game 1 : Red Pill, Blue Pill
+      <p name="gamePart1"><i> After you enter your Name and Password, you will be given
+        <span style="color: red">Red</span> pill or <span style="color: blue">Blue</span> pill.
+        <br> If you are given the <span style="color: red">Red</span> pill you may move on. If you are given the  <span style="color: blue">Blue</span>
+        pill, you lose.</i>
+      </p>
+        <!-- Alerts when Username and Passward are empty -->
+        <input onclick="generatePills()" type="button" id="generatePill" value="Generate Pills">
+      <br><br>
+        <centered><div id="pilloutput"></div></centered>
+      <br>
+      <br>
+      <br>
+    <!-- Game 2 randomize three images and uses RandomOneOf and images are found in icons8.com -->
+    Game 2 : Spin Game
+      <p><i> Spin to match all three. If all three matches, you earn points.<br>
+      <br>Rules: <br> 1. You get 10 spins, <br>2. All three 7's = 10 pts <br> 3. Everything else = 3 pts.
+      <br> 4. If you earn 10 or more points you win! <br> <center>Good Luck!<center> </i></p>
+    <div style="text-align:center">
+      <p id="spinGame">
+        <img id="spin1" border=1 alt="slot image"
+          src="https://img.icons8.com/color/100/000000/pikachu-pokemon.png"/>
+        <img id="spin2" border=1 alt="slot image"
+          src="https://img.icons8.com/doodle/100/000000/tiger.png"/>
+        <img id="spin3" border=1 alt="slot image"
+          src="https://img.icons8.com/metro/100/000000/ninja-turtle.png"/>
+      </p>
+      <input type="button" id="spinbutton" value="Spin to Win!" onclick="spin2win();">
+
+  <!-- The final part of this page includes entering the total point from Game 2 -->
+  <!-- This game is processed through using parseFloat and two if's statement -->
+  <!-- If's statement include if point is less or if points is more than 10 -->
+      <p> Enter Total Points: <br>
+      <input type="number" name="spinPoints" id="pointBox" value="">
+      <input type="button" id="submitSpin" value="Enter" onclick="spinSubmit()">
+      <div id="OutputSpin"></div>
+
+    <script type="text/javascript" src="gitlab11.js"></script>
+    <script type="text/javascript" src="http://balance3e.com/random.js"></script>
+    <script type="text/javascript" src="lab11.js">
+
+    </script>
+
+</html>

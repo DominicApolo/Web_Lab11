@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<!-- CSCI 200                                                   Lab 11 -->
+<!-- This is a login page that include games using materials from lab  -->
+<!-- ================================================================= -->
+<html>
+    <head>
+        <title> Login Page</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <script>
+function Password() {
+  // to show hidden password when box is checked
+  var x = document.getElementById("Pass");
+    if (x.type === "password") {
+      x.type = "text";
+  } else {
+          x.type = "password";
+        }
+}
+
+function fakeGame() {
+  // assume: button is clicked
+  // result: alert for "Let's Play a Game" when clicked
+  alert("Just Kidding, There are no games :(")
+}
+
+function submitform() {
+  // result: function show alert when Username and Password are empty
+  var name;
+    name = document.getElementById("Uname").value;
+  if (name == "") {
+    alert("Missing Information Required!!");
+    return false;
+
+  }
+  // result: output of Username and Password when "submit" is clicked
+  document.getElementById('outputDiv').innerHTML='<p> Hello ' +
+  document.getElementById('Uname').value + '. Your Password is ' +
+  document.getElementById('Pass').value + '. Keep it a secret.</p>';
+}
+
+
+function generatePills() {
+  // result: to show alert when Username and Password are empty
+  var name=document.getElementById("Uname").value;
+  if (name == "") {
+    alert("Woah Woah! You'll have to fill in the boxes before you can generate a pill!");
+    return false;
+  }
+  // result: output of the pills after "Generate Pills" button is clicked
+  document.getElementById('outputDiv').innerHTML='<p> Hello ' +
+  document.getElementById('Uname').value + '. Your Password is ' +
+  document.getElementById('Pass').value + '. Keep it a secret.</p>';
+
+  var pill1
+  // assume: variable choses random
+  // result: red and blue pill
+    pill1 = RandomOneOf(['RED', 'BLUE']);
+      document.getElementById('pilloutput').innerHTML= '<i>You have been given the <b>' + pill1 + '</b> pill. <i> Now that you have been given the <b>' + pill1 + '</b> pill, move on to the second part of this game. ';
+    if (pill1 == 'BLUE') {
+      document.getElementById('pilloutput').innerHTML= '<i> You have been given the <b>' + pill1 + '</b> pill. Sorry, you lost <i>';
+      return false;
+    }
+}
+
+function spin2win() {
+
+  var name=document.getElementById("Uname").value;
+  if (name == "") {
+    alert("Woah there buddy! We still need some information from you.");
+    return false;
+  }
+
+  var spin1, spin2, spin3;
+
+  spin1 = RandomOneOf(['color/100/000000/pikachu-pokemon', 'doodle/100/000000/tiger', 'metro/100/000000/ninja-turtle', 'metro/100/000000/7-circle']);
+  spin2 = RandomOneOf(['color/100/000000/pikachu-pokemon', 'doodle/100/000000/tiger', 'metro/100/000000/ninja-turtle', 'metro/100/000000/7-circle']);
+  spin3 = RandomOneOf(['color/100/000000/pikachu-pokemon', 'doodle/100/000000/tiger', 'metro/100/000000/ninja-turtle', 'metro/100/000000/7-circle']);
+
+  document.getElementById('spin1').src=
+    'https://img.icons8.com/' + spin1 + '.png';
+  document.getElementById('spin2').src=
+    'https://img.icons8.com/' + spin2 + '.png';
+  document.getElementById('spin3').src=
+    'https://img.icons8.com/' + spin3 + '.png';
+
+}
+
+function spinSubmit() {
+  var points;
+
+  points = parseFloat(document.getElementById('pointBox').value);
+
+  if (points < 10) {
+    document.getElementById('OutputSpin').innerHTML='You Lost!. Better luck next time';
+  }
+
+  if (points >= 10) {
+    document.getElementById('OutputSpin').innerHTML='Yay! You Win!';
+  }
+}
+
+</script>
+
+    <body>
+        <h2>CSCI 200<br> Login Page<br></h2>
+        <!-- features the main page (login, favorite link, alert, games created from RandomOneOf and parseFloat) -->
+        <!-- includes two icon in the page using onmouseout & onmouseover-->
+        <div class="login">
+            <form id="login" method="get" action="login.php">
+                <img src="https://img.icons8.com/ios/512/000000/the-flash-sign.png" id="avatar" class="center" onmouseover="this.src='https://img.icons8.com/ios-filled/512/000000/naruto.png';" onmouseout="this.src='https://img.icons8.com/ios/512/000000/the-flash-sign.png';">
+                <br>
+            </form>
+            <!-- Username/Password has input and output that is after the "SUBMIT" button -->
+            <label>
+                <b>User Name</b>
+                <input type="text" name="Uname" id="Uname" placeholder="Username">
+                <br>
+                <br>
+                <label>
+                    <b>Password</b>
+                    <a href="https://blog.avast.com/strong-password-ideas" id="StrongPass" target="popup" onclick="window.open('https://blog.avast.com/strong-password-ideas','popup','width=800px,height=500px'); return false"> <i>(Ideas for a strong password) </i></a>
+                </label>
+                <input type="password" name="Pass" id="Pass" placeholder="Password">
+                <br>
+                <br>
+                <input type="checkbox" onclick="Password()"> Show Password
+                <br>
+                <br>
+                <!-- Alerts when Username and Passward are empty -->
+                <input onclick="submitform()" type="button" name="log" id="log" value="SUBMIT">
+                <br>
+                <br>
+                <a href="https://giphy.com/gifs/3ornk7TgUdhjhTYgta/html5" id="forgotpass" target="popup" onclick="window.open('https://giphy.com/gifs/3ornk7TgUdhjhTYgta/html5','popup','width=500px,height=250px'); return false">Forget Password? </a>
+                <input onclick="fakeGame()" type="button" name="playgame" id="myFunction" value="Click to Play Game!">
+                <br>
+                <b> <div id="outputDiv" style="text-align:center;"></div> <!-- The output of the username and password --> </b>
+                <br>
+                <!-- Game 1 generate red/blue pills that is processed through RandomOneOf and var/if statements -->
+                Game 1 : Red Pill, Blue Pill
+                <p name="gamePart1"><i> After you enter your Name and Password, you will be given <span style="color: red">Red</span> pill or <span style="color: blue">Blue</span> pill. <br> If you are given the <span style="color: red">Red</span> pill you may move on. If you are given the  <span style="color: blue">Blue</span>
+        pill, you lose.</i> </p>
+                <!-- Alerts when Username and Passward are empty -->
+                <input onclick="generatePills()" type="button" id="generatePill" value="Generate Pills">
+                <br>
+                <div id="pilloutput"></div>
+                <br>
+                <br>
+                <br>
+                <!-- Game 2 randomize three images and uses RandomOneOf and images are found in icons8.com -->
+                Game 2 : Spin Game
+                <p><i> Spin until you match all three. If all three matches, you earn points.<br> <br>Rules: <br> 1. You get 10 spins, <br>2. All three 7's = 10 pts <br> 3. Everything else = 3 pts. <br> 4. If you earn 10 or more points you win! <br> <center>Good Luck!
+                            <center>
+</i></p>
+                <div style="text-align:center">
+                    <p id="spinGame"> <img id="spin1" border="1" alt="slot image" src="https://img.icons8.com/color/100/000000/pikachu-pokemon.png"/> <img id="spin2" border="1" alt="slot image" src="https://img.icons8.com/doodle/100/000000/tiger.png"/> <img id="spin3" border="1" alt="slot image" src="https://img.icons8.com/metro/100/000000/ninja-turtle.png"/> </p>
+                    <input type="button" id="spinbutton" value="Spin to Win!" onclick="spin2win();">
+                    <p> Enter Total Points: <br> <input type="number" name="spinPoints" id="pointBox" value=""> <input type="button" id="submitSpin" value="Enter" onclick="spinSubmit()"> <div id="OutputSpin">
+</div> <script type="text/javascript" src="function.js"></script> <script type="text/javascript" src="http://balance3e.com/random.js"></script>
+</html>
+<style>
+  #avatar {
+  border: 3px solid #000000;
+  border-radius: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 125px;
+  height: 125px;
+  background-size: auto;
+  cursor: pointer;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family:"Impact, Charcoal, sans-serif";
+  background-image: url("https://noirlab.edu/public/media/archives/images/wallpaper5/noao-m46.jpg");
+}
+
+.login {
+  float: left 10px;
+  text-align:left;
+  width: 325px;
+  overflow: hidden;
+  margin: auto;
+  padding: 80px;
+  background-image: url("https://cdn.hipwallpaper.com/m/92/60/RhG7BO.jpg");
+  border-radius: 15px;
+  box-shadow: 5px 5px 5px black;
+}
+
+h2{
+  text-align: center;
+  color: black;
+  padding: 20px;
+  text-shadow: 1px 1px skyblue;
+  font-family: "Impact, Charcoal, sans-serif";
+}
+
+label{
+  color: black;
+  font-size: 17px;
+}
+
+#Uname{
+  width: 300px;
+  height: 25px;
+  border: none;
+  border-radius: 3px;
+  padding-left: 8px;
+  border: 1px solid grey;
+}
+#Pass{
+  width: 300px;
+  height: 25px;
+  border: none;
+  border-radius: 3px;
+  padding-left: 8px;
+  border: 1px solid grey;
+
+}
+#log{
+  width: 300px;
+  height: 30px;
+  border: none;
+  border-radius: 4px;
+  padding-left: 7px;
+  color: white;
+  border: 1px solid grey;
+  background: black;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+#StrongPass {
+  font-size: 12px;
+}
+
+#forgotpass {
+  float: right;
+
+}
+
+#myFunction {
+  height: 20px;
+  background: black;
+  color: white;
+  font-weight: 500;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid grey;
+
+}
+#pilloutput {
+  float: right;
+  font-size: 15px;
+  text-align: left;
+}
+
+#generatePill {
+  float: left;
+  width: 100px;
+  font-weight: 500;
+  border-radius: 15px;
+  border: 1px solid grey;
+}
+
+#spin1 {
+  background: white;
+}
+#spin2 {
+  background: white;
+}
+#spin3 {
+  background: white;
+
+}
+
+#spinbutton {
+  font-weight: 500;
+  border-radius: 4px;
+  border: 1px solid grey;
+}
+
+#submitSpin {
+  font-weight: 500;
+  border-radius: 4px;
+  border: 1px solid grey;
+}
+#pointBox {
+  font-family:"Impact, Charcoal, sans-serif";
+  width: 50px;
+  text-align: center;
+  border: 1px solid grey;
+}
+
+<style>
+
+  #avatar {
+    border: 3px solid #000000;
+    border-radius: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 125px;
+    height: 125px;
+    background-size: auto;
+    cursor: pointer;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family:"Impact, Charcoal, sans-serif";
+    background-image: url("https://noirlab.edu/public/media/archives/images/wallpaper5/noao-m46.jpg");
+  }
+
+  .login {
+    float: left 10px;
+    text-align:left;
+    width: 325px;
+    overflow: hidden;
+    margin: auto;
+    padding: 80px;
+    background-image: url("https://cdn.hipwallpaper.com/m/67/74/y9vIwd.png");
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px black;
+  }
+
+  h2{
+    text-align: center;
+    color: black;
+    padding: 20px;
+    text-shadow: 1px 1px skyblue;
+    font-family: "Impact, Charcoal, sans-serif";
+  }
+
+  label{
+    color: black;
+    font-size: 17px;
+  }
+
+  #Uname{
+    width: 300px;
+    height: 25px;
+    border: none;
+    border-radius: 3px;
+    padding-left: 8px;
+    border: 1px solid grey;
+  }
+  #Pass{
+    width: 300px;
+    height: 25px;
+    border: none;
+    border-radius: 3px;
+    padding-left: 8px;
+    border: 1px solid grey;
+
+  }
+  #log{
+    width: 300px;
+    height: 30px;
+    border: none;
+    border-radius: 4px;
+    padding-left: 7px;
+    color: white;
+    border: 1px solid grey;
+    background: black;
+    cursor: pointer;
+    font-weight: 700;
+  }
+
+  #StrongPass {
+    font-size: 12px;
+  }
+
+  #forgotpass {
+    float: right;
+
+  }
+
+  #myFunction {
+    height: 20px;
+    background: black;
+    color: white;
+    font-weight: 500;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid grey;
+
+  }
+  #pilloutput {
+    float: right;
+    font-size: 15px;
+    text-align: left;
+  }
+
+  #generatePill {
+    float: left;
+    width: 100px;
+    font-weight: 500;
+    border-radius: 15px;
+    border: 1px solid grey;
+  }
+
+  #spin1 {
+    background: white;
+  }
+  #spin2 {
+    background: white;
+  }
+  #spin3 {
+    background: white;
+
+  }
+
+  #spinbutton {
+    font-weight: 500;
+    border-radius: 4px;
+    border: 1px solid grey;
+  }
+
+  #submitSpin {
+    font-weight: 500;
+    border-radius: 4px;
+    border: 1px solid grey;
+  }
+  #pointBox {
+    font-family:"Impact, Charcoal, sans-serif";
+    width: 50px;
+    text-align: center;
+    border: 1px solid grey;
+  }
+
+
+</style>
