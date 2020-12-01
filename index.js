@@ -29,7 +29,6 @@ function submitform() {
   document.getElementById('Pass').value + '. Keep it a secret.</p>';
 }
 
-
 function generatePills() {
   // function show alert when Username and Password are empty
   var name=document.getElementById("Uname").value;
@@ -42,12 +41,11 @@ function generatePills() {
   document.getElementById('Uname').value + '. Your Password is ' +
   document.getElementById('Pass').value + '. Keep it a secret.</p>';
 
-  var pill1
-  // variable choses random of red and blue pill
-    pill1 = RandomOneOf(['RED', 'BLUE']);
-      document.getElementById('pilloutput').innerHTML= '<i>You have been given the <b>' + pill1 + '</b> pill. <i> Now that you have been given the <b>' + pill1 + '</b> pill, move on to the second part of this game. ';
-    if (pill1 == 'BLUE') {
-      document.getElementById('pilloutput').innerHTML= '<i> You have been given the <b>' + pill1 + '</b> pill. Sorry, you lost <i>';
+  var lists = ['RED', 'BLUE'];
+  var list = lists[Math.floor(Math.random()*lists.length)];
+      document.getElementById('pilloutput').innerHTML= '<i>You have been given the <b>' + list + '</b> pill. <i> Now that you have been given the <b>' + list + '</b> pill, move on to the second part of this game. ';
+    if (list == 'BLUE') {
+      document.getElementById('pilloutput').innerHTML= '<i> You have been given the <b>' + list + '</b> pill. Sorry, you lost <i>';
       return false;
     }
 }
@@ -60,12 +58,13 @@ function spin2win() {
     return false;
   }
 
-  var spin1, spin2, spin3;
+//Assumes: generating random icons from variable without using RandomOneOf
+//Results: icons are randomly generated
+  var spin = ['color/100/000000/pikachu-pokemon', 'doodle/100/000000/tiger', 'metro/100/000000/ninja-turtle', 'metro/100/000000/7-circle'];
 
-  spin1 = RandomOneOf(['color/100/000000/pikachu-pokemon', 'doodle/100/000000/tiger', 'metro/100/000000/ninja-turtle', 'metro/100/000000/7-circle']);
-  spin2 = RandomOneOf(['color/100/000000/pikachu-pokemon', 'doodle/100/000000/tiger', 'metro/100/000000/ninja-turtle', 'metro/100/000000/7-circle']);
-  spin3 = RandomOneOf(['color/100/000000/pikachu-pokemon', 'doodle/100/000000/tiger', 'metro/100/000000/ninja-turtle', 'metro/100/000000/7-circle']);
-
+  spin1 = spin[Math.floor(Math.random()*spin.length)];
+  spin2 = spin[Math.floor(Math.random()*spin.length)];
+  spin3 = spin[Math.floor(Math.random()*spin.length)];
   document.getElementById('spin1').src=
     'https://img.icons8.com/' + spin1 + '.png';
   document.getElementById('spin2').src=
